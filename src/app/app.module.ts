@@ -5,11 +5,15 @@ import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
 import { CounterComponent } from './counter/counter.component';
+import { TodolistComponent } from './todolist/todolist.component';
+import { TodoitemComponent } from './todoitem/todoitem.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    CounterComponent
+    CounterComponent,
+    TodolistComponent,
+    TodoitemComponent
   ],
   imports: [
     BrowserModule,
