@@ -1,3 +1,14 @@
 <h1>
   {{title}}
 </h1>
+
+
+<app-counter [value]="currentValue" (change)="setValue($event)"></app-counter>
+
+<div>
+  <br>
+  <br>
+  <button (click)="setRandomValue()">Randomizerrrrr</button>
+
+  <p *ngIf="currentValue || currentValue === 0">Random value: {{currentValue}}</p>
+</div>
