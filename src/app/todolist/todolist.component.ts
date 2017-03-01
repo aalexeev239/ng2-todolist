@@ -12,7 +12,7 @@ import {TodoStatus} from '../shared/constants';
 export class TodolistComponent implements OnInit {
   idCounter: number;
 
-  todoItems: ITodo[] = [
+  todos: ITodo[] = [
     {
       id: 1,
       name: 'Позвонить в сервис',
@@ -38,30 +38,30 @@ export class TodolistComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    this.idCounter = this.todoItems.length;
+    this.idCounter = this.todos.length;
   }
 
   changeTodoStatus(todo: ITodo) {
     const status = todo.status === TodoStatus.TODO ? TodoStatus.DONE : TodoStatus.TODO;
 
-    this.todoItems = this.todoItems.map(
+    this.todos = this.todos.map(
       item => item.id === todo.id ? Object.assign({}, item, {status}) : item
     );
   }
 
   deleteTodo(todo: ITodo) {
-    this.todoItems = this.todoItems.filter(
+    this.todos = this.todos.filter(
       item => item.id !== todo.id
     );
   }
 
   addTodo(name: string) {
-    if (this.todoItems.some(item => item.name === name)) {
+    if (this.todos.some(item => item.name === name)) {
       return;
     }
 
     this.idCounter++;
-    this.todoItems.push({
+    this.todos.push({
       id: this.idCounter,
       name: name,
       status: TodoStatus.TODO

@@ -6,8 +6,10 @@
   <app-add-todo (add)="addTodo($event)"></app-add-todo>
 
   <ul class="list">
-    <li *ngFor="let item of todoItems" class="list__item">
+    <li *ngFor="let item of todos" class="list__item">
       <app-todoitem [item]="item" (change)="changeTodoStatus($event)" (delete)="deleteTodo($event)"></app-todoitem>
     </li>
   </ul>
+
+  <app-stats [todos]="todos"></app-stats>
 </div>
