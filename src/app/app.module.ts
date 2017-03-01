@@ -9,6 +9,7 @@ import { TodolistComponent } from './todolist/todolist.component';
 import { TodoitemComponent } from './todoitem/todoitem.component';
 import { AddTodoComponent } from './add-todo/add-todo.component';
 import { StatsComponent } from './stats/stats.component';
+import { FiltersComponent } from './filters/filters.component';
 
 
 @NgModule({
@@ -18,7 +19,8 @@ import { StatsComponent } from './stats/stats.component';
     TodolistComponent,
     TodoitemComponent,
     AddTodoComponent,
-    StatsComponent
+    StatsComponent,
+    FiltersComponent
   ],
   imports: [
     BrowserModule,

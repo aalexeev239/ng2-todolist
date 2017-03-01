@@ -1,0 +1,14 @@
+<div class="filters">
+  <div
+    class="filters__item"
+    [class.filters__item_selected]="isActive(filter.ALL)"
+    (click)="setFilter(filter.ALL)">все</div>
+  <div
+    class="filters__item"
+    [class.filters__item_selected]="isActive(filter.COMPLETED)"
+    (click)="setFilter(filter.COMPLETED)">завершенные</div>
+  <div
+    class="filters__item"
+    [class.filters__item_selected]="isActive(filter.LEFT)"
+    (click)="setFilter(filter.LEFT)">незавершенные</div>
+</div>

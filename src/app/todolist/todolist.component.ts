@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {ITodo} from '../shared/model/itodo';
 import {TodoStatus} from '../shared/constants';
-
-
+import {Filter} from '../shared/constants';
 
 @Component({
   selector: 'app-todolist',
@@ -11,6 +10,7 @@ import {TodoStatus} from '../shared/constants';
 })
 export class TodolistComponent implements OnInit {
   idCounter: number;
+  currentFilter: number;
 
   todos: ITodo[] = [
     {
@@ -35,10 +35,13 @@ export class TodolistComponent implements OnInit {
     }
   ];
 
+  filteredTodos: ITodo[] = [];
+
   constructor() { }
 
   ngOnInit() {
     this.idCounter = this.todos.length;
+    this.setCurrentFilter(Filter.ALL);
   }
 
   changeTodoStatus(todo: ITodo) {
@@ -66,5 +69,21 @@ export class TodolistComponent implements OnInit {
       name: name,
       status: TodoStatus.TODO
     })
+  }
+
+  setCurrentFilter(filter :number) {
+    this.currentFilter = filter;
+  }
+
+  checkTodo(item: ITodo): boolean {
+    switch (this.currentFilter) {
+      case (Filter.ALL):
+        return true;
+      case (Filter.COMPLETED):
+        return item.status === TodoStatus.DONE;
+      case (Filter.LEFT):
+        return item.status === TodoStatus.TODO;
+    }
+    return false;
   }
 }

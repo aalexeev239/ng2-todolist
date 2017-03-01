@@ -5,9 +5,14 @@
 
   <app-add-todo (add)="addTodo($event)"></app-add-todo>
 
+  <app-filters [currentFilter]="currentFilter" (change)="setCurrentFilter($event)"></app-filters>
+
   <ul class="list">
-    <li *ngFor="let item of todos" class="list__item">
-      <app-todoitem [item]="item" (change)="changeTodoStatus($event)" (delete)="deleteTodo($event)"></app-todoitem>
+    <li
+      *ngFor="let item of todos"
+      class="list__item"
+    >
+      <app-todoitem *ngIf="checkTodo(item)" [item]="item" (change)="changeTodoStatus($event)" (delete)="deleteTodo($event)"></app-todoitem>
     </li>
   </ul>
 
