@@ -1,20 +1,18 @@
-{{todoItems | json}}
 <h1 class="head">TODO List</h1>
 
-<div class="container">
+<app-add-todo (add)="addTodo($event)"></app-add-todo>
 
-  <app-add-todo (add)="addTodo($event)"></app-add-todo>
+<app-filters [currentFilter]="currentFilter" (change)="setCurrentFilter($event)"></app-filters>
 
-  <app-filters [currentFilter]="currentFilter" (change)="setCurrentFilter($event)"></app-filters>
+<ul class="list">
+  <li
+    *ngFor="let item of todos"
+    class="list__item"
+  >
+    <app-todoitem *ngIf="checkTodo(item)" [item]="item" (change)="changeTodoStatus($event)" (delete)="deleteTodo($event)"></app-todoitem>
+  </li>
+</ul>
 
-  <ul class="list">
-    <li
-      *ngFor="let item of todos"
-      class="list__item"
-    >
-      <app-todoitem *ngIf="checkTodo(item)" [item]="item" (change)="changeTodoStatus($event)" (delete)="deleteTodo($event)"></app-todoitem>
-    </li>
-  </ul>
+<app-stats [todos]="todos"></app-stats>
 
-  <app-stats [todos]="todos"></app-stats>
-</div>
+{{todos | json}}
