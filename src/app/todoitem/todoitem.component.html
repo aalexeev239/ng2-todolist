@@ -1,10 +1,10 @@
 <div class="task"
-     [class.task_todo]="!isDone"
-     [class.task_done]="isDone">
+     [class.task_todo]="!isDone()"
+     [class.task_done]="isDone()">
   <div
     class="task__status"
-    [class.task__status_todo]="!isDone"
-    [class.task__status_done]="isDone"
+    [class.task__status_todo]="!isDone()"
+    [class.task__status_done]="isDone()"
     (click)="changeStatus()"
   ></div>
   <span class="task__name">{{item.name}}</span>

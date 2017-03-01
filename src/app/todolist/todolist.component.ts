@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {ITodoItem} from '../shared/model/todo-item';
+import {ITodo} from '../shared/model/itodo';
 import {TodoStatus} from '../shared/constants';
 
 
@@ -12,7 +12,7 @@ import {TodoStatus} from '../shared/constants';
 export class TodolistComponent implements OnInit {
   idCounter: number;
 
-  todoItems: ITodoItem[] = [
+  todoItems: ITodo[] = [
     {
       id: 1,
       name: 'Позвонить в сервис',
@@ -41,7 +41,7 @@ export class TodolistComponent implements OnInit {
     this.idCounter = this.todoItems.length;
   }
 
-  changeTodoStatus(todo: ITodoItem) {
+  changeTodoStatus(todo: ITodo) {
     const status = todo.status === TodoStatus.TODO ? TodoStatus.DONE : TodoStatus.TODO;
 
     this.todoItems = this.todoItems.map(
@@ -49,7 +49,7 @@ export class TodolistComponent implements OnInit {
     );
   }
 
-  deleteTodo(todo: ITodoItem) {
+  deleteTodo(todo: ITodo) {
     this.todoItems = this.todoItems.filter(
       item => item.id !== todo.id
     );

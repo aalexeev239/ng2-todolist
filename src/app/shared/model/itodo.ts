@@ -1,6 +1,6 @@
 import {TodoStatus} from '../constants';
 
-export interface ITodoItem {
+export interface ITodo {
   id: number;
   name: string;
   status: number;

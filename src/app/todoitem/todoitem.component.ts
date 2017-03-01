@@ -1,5 +1,5 @@
 import {Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
-import {ITodoItem} from '../shared/model/todo-item';
+import {ITodo} from '../shared/model/itodo';
 import {TodoStatus} from '../shared/constants';
 
 
@@ -10,16 +10,16 @@ import {TodoStatus} from '../shared/constants';
 })
 export class TodoitemComponent implements OnInit {
 
-  @Input() item: ITodoItem;
-  @Output() change: EventEmitter<ITodoItem> = new EventEmitter();
-  @Output() delete: EventEmitter<ITodoItem> = new EventEmitter();
+  @Input() item: ITodo;
+  @Output() change: EventEmitter<ITodo> = new EventEmitter();
+  @Output() delete: EventEmitter<ITodo> = new EventEmitter();
 
   constructor() { }
 
   ngOnInit() {
   }
 
-  get isDone() {
+  isDone() {
     return this.item.status === TodoStatus.DONE;
   }
 
