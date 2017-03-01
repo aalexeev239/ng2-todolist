@@ -1,0 +1,9 @@
+<div class="task">
+  <div
+    class="task__status"
+    [class.task__status_todo]="!isDone"
+    [class.task__status_done]="isDone"
+  ></div>
+  <span class="task__name">{{item.name}}</span>
+  <div class="task__delete-button">❌</div>
+</div>

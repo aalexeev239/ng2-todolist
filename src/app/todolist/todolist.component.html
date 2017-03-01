@@ -1,0 +1,6 @@
+<li *ngFor="let item of todoItems" class="list__item">
+  <app-todoitem [item]="item"></app-todoitem>
+</li>
+{{todoItems | json}}
+
+
