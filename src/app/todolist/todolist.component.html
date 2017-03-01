@@ -1,6 +1,13 @@
-<li *ngFor="let item of todoItems" class="list__item">
-  <app-todoitem [item]="item"></app-todoitem>
-</li>
 {{todoItems | json}}
+<h1 class="head">TODO List</h1>
 
+<div class="container">
 
+  <app-add-todo (add)="addTodo($event)"></app-add-todo>
+
+  <ul class="list">
+    <li *ngFor="let item of todoItems" class="list__item">
+      <app-todoitem [item]="item" (change)="changeTodoStatus($event)" (delete)="deleteTodo($event)"></app-todoitem>
+    </li>
+  </ul>
+</div>

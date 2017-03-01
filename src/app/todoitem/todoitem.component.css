@@ -21,6 +21,7 @@
   border-radius: 10px;
   text-align: center;
   color: lightgrey;
+  cursor: pointer;
 }
 
 .task__name {
@@ -28,18 +29,6 @@
   white-space: nowrap;
   text-overflow: ellipsis;
   overflow: hidden;
-}
-
-.task__input {
-  width: 100%;
-  font-size: 14px;
-  border: none;
-  padding: 0;
-  background-color: transparent;
-}
-
-.task__input:focus{
-  outline: none;
 }
 
 .task_done .task__status {
@@ -58,6 +47,7 @@
   color: red;
   font-size: 12px;
   visibility: hidden;
+  cursor: pointer;
 }
 
 .task:hover .task__delete-button {
