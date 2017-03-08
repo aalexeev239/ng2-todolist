@@ -21,8 +21,7 @@ import { QwertyComponent } from './qwerty/qwerty.component';
     TodoitemComponent,
     AddTodoComponent,
     StatsComponent,
-    FiltersComponent,
-    QwertyComponent
+    FiltersComponent
   ],
   imports: [
     BrowserModule,
