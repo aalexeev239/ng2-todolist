@@ -10,6 +10,7 @@ import { TodoitemComponent } from './todoitem/todoitem.component';
 import { AddTodoComponent } from './add-todo/add-todo.component';
 import { StatsComponent } from './stats/stats.component';
 import { FiltersComponent } from './filters/filters.component';
+import { QwertyComponent } from './qwerty/qwerty.component';
 
 
 @NgModule({
@@ -20,7 +21,8 @@ import { FiltersComponent } from './filters/filters.component';
     TodoitemComponent,
     AddTodoComponent,
     StatsComponent,
-    FiltersComponent
+    FiltersComponent,
+    QwertyComponent
   ],
   imports: [
     BrowserModule,

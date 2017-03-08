@@ -18,3 +18,4 @@ export class AppComponent {
     this.currentValue = evt;
   }
 }
+

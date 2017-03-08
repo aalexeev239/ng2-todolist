@@ -2,7 +2,6 @@ import {Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
 import {ITodo} from '../shared/model/itodo';
 import {TodoStatus} from '../shared/constants';
 
-
 @Component({
   selector: 'app-todoitem',
   templateUrl: './todoitem.component.html',
