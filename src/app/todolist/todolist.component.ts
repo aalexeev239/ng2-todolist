@@ -1,7 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {ITodo} from '../shared/model/itodo';
 import {TodoStatus} from '../shared/constants';
 import {Filter} from '../shared/constants';
+import {TodosService} from '../shared/model/todos.service';
+
 
 @Component({
   selector: 'app-todolist',
@@ -9,69 +11,35 @@ import {Filter} from '../shared/constants';
   styleUrls: ['./todolist.component.css']
 })
 export class TodolistComponent implements OnInit {
-  idCounter: number;
   currentFilter: number;
 
-  todos: ITodo[] = [
-    {
-      id: 1,
-      name: 'Позвонить в сервис',
-      status: TodoStatus.TODO
-    },
-    {
-      id: 2,
-      name: 'Купить хлеб',
-      status: TodoStatus.TODO
-    },
-    {
-      id: 3,
-      name: 'Захватить мир',
-      status: TodoStatus.DONE
-    },
-    {
-      id: 4,
-      name: 'Добавить тудушку в список',
-      status: TodoStatus.TODO
-    }
-  ];
+  todos: ITodo[] = [];
 
-  filteredTodos: ITodo[] = [];
-
-  constructor() { }
+  constructor(private todosService: TodosService) {
+  }
 
   ngOnInit() {
-    this.idCounter = this.todos.length;
     this.setCurrentFilter(Filter.ALL);
+    this.todos = this.todosService.getTodos();
+    console.log(JSON.stringify(this.todos));
   }
 
   changeTodoStatus(todo: ITodo) {
-    const status = todo.status === TodoStatus.TODO ? TodoStatus.DONE : TodoStatus.TODO;
-
-    this.todos = this.todos.map(
-      item => item.id === todo.id ? Object.assign({}, item, {status}) : item
-    );
+    this.todosService.changeTodoStatus(todo);
+    this.updateTodos();
   }
 
   deleteTodo(todo: ITodo) {
-    this.todos = this.todos.filter(
-      item => item.id !== todo.id
-    );
+    this.todosService.deleteTodo(todo);
+    this.updateTodos();
   }
 
   addTodo(name: string) {
-    if (this.todos.some(item => item.name === name)) {
-      return;
-    }
-
-    this.idCounter++;
-    this.todos.push({
-      id: this.idCounter,
-      name: name,
-      status: TodoStatus.TODO
-    })
+    this.todosService.addTodo(name);
+    this.updateTodos();
   }
 
-  setCurrentFilter(filter :number) {
+  setCurrentFilter(filter: number) {
     this.currentFilter = filter;
   }
 
@@ -85,5 +53,9 @@ export class TodolistComponent implements OnInit {
         return item.status === TodoStatus.TODO;
     }
     return false;
+  }
+
+  private updateTodos() {
+    this.todos = this.todosService.getTodos();
   }
 }
