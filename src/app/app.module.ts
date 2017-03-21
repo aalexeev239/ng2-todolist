@@ -11,6 +11,7 @@ import {AddTodoComponent} from './add-todo/add-todo.component';
 import {StatsComponent} from './stats/stats.component';
 import {FiltersComponent} from './filters/filters.component';
 import {TodosService} from "./shared/model/todos.service";
+import {TodosAsyncService} from "./shared/model/todosAsync.service";
 
 import {AngularFireModule} from 'angularfire2/index';
 import {firebaseConfig} from '../environments/firebase.config';
@@ -32,7 +33,7 @@ import {firebaseConfig} from '../environments/firebase.config';
     FormsModule,
     HttpModule
   ],
-  providers: [TodosService],
+  providers: [TodosService, TodosAsyncService],
   bootstrap: [AppComponent]
 })
 export class AppModule {

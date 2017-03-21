@@ -1,8 +1,6 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {ITodo} from './itodo';
 import {TodoStatus} from '../constants';
-import {AngularFire} from 'angularfire2';
-
 
 @Injectable()
 export class TodosService {
@@ -31,7 +29,7 @@ export class TodosService {
     }
   ];
 
-  constructor(private af: AngularFire) {
+  constructor() {
     this.idCounter = this.todos.length;
   }
 
